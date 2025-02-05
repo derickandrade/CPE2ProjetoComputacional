@@ -3,6 +3,6 @@ Esse é o projeto computacional da disciplina Computação Para Engenharia do se
 O grupo é formado por:
 - Derick Daniel Silva de Andrade ([@derickandrade](https://github.com/derickandrade)) - Ciência da Computação
 - Lucas Santana Barbosa ([@lucassanta25](https://github.com/lucassanta25)) - Engenharia de Redes de Comunicação
-- Mcmillan Gutierres Costa Soares ([]()) - Biblioteconomia
+- Mcmillan Gutierres Costa Soares ([@McmillanSoares](https://github.com/McmillanSoares)) - Biblioteconomia
 
 O projeto consiste na implementação de um executável de uma agenda de contatos com a interface gráfica implementada no terminal.
