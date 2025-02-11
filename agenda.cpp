@@ -8,8 +8,8 @@ using namespace std;
 //
 struct Contato {
     string nome;
-    string email;
     string telefone;
+    string email;    
     string endereco;
 };
 
@@ -82,7 +82,6 @@ void exibirLista(){
                 cout << " ";
             }
         }
-
         cout << "  || " << contato.endereco << "\n";
         
     }
@@ -133,40 +132,124 @@ void adicionarContato(){
     system("cls");
 }
 
-void pesquisarContatoNome(){
-
+void pesquisarContatoNome(Contato*& _pessoa){
+    system("cls");
+    encontrado = false;
+    string nome;        
+    cout << "Insira o nome do contato: ";
+    cin.ignore();
+    getline(cin, nome);      
+    for (Contato& contato : lista){
+        if (contato.nome == nome){
+            _pessoa = &contato;            
+            encontrado = true;
+            break;          
+        }
+    }    
 }
 
-void pesquisarContatoTelefone(){
-
+void pesquisarContatoTelefone(Contato*& _pessoa){
+    system("cls");
+    string telefone;
+    encontrado = false;
+    cout << "Insira o telefone do contato: ";
+    cin.ignore();
+    getline(cin, telefone);        
+    for (Contato& contato : lista){
+        if (contato.telefone == telefone){
+            _pessoa = &contato;
+            encontrado = true;
+            break;
+        }
+    }    
 }
 
-void pesquisarContatoEmail(){
-
+void pesquisarContatoEmail(Contato*& _pessoa){
+    system("cls");
+    string email;
+    encontrado = false;
+    cout << "Insira o e-mail do contato: ";
+    cin.ignore();
+    getline(cin, email);        
+    for (Contato& contato : lista){
+        if (contato.email == email){
+            _pessoa = &contato;
+            encontrado = true;
+            break;
+        }
+    }  
 }
 
-void pesquisarContatoEndereco(){
-
+void pesquisarContatoEndereco(Contato*& _pessoa){
+    system("cls");
+    string endereco;
+    encontrado = false;
+    cout << "Insira o telefone do contato: ";
+    cin.ignore();
+    getline(cin, endereco);        
+    for (Contato& contato : lista){
+        if (contato.telefone == endereco){
+            _pessoa = &contato;
+            encontrado = true;
+            break;
+        }
+    }  
 }
 
-void editarContatoNome(){
-
+void editarContatoNome(Contato* _pessoa){
+    string novoNome;
+    cout << "Insira o novo nome: ";    
+    getline(cin, novoNome);
+    _pessoa->nome = novoNome;             
 }
 
-void editarContatoTelefone(){
-
+void editarContatoTelefone(Contato* _pessoa){
+    string novoTelefone;
+    cout << "Insira o novo telefone: ";
+    getline(cin, novoTelefone);
+    _pessoa->telefone = novoTelefone;
 }
 
-void editarContatoEmail(){
-
+void editarContatoEmail(Contato* _pessoa){
+    string novoEmail;
+    cout << "Insira o novo e-mail: ";
+    getline(cin, novoEmail);
+    _pessoa->email = novoEmail;
 }
 
-void editarContatoEndereco(){
-
+void editarContatoEndereco(Contato* _pessoa){
+    string novoEndereco;
+    cout << "Insira o novo endereço: ";    
+    getline(cin, novoEndereco);
+    _pessoa->endereco = novoEndereco;
 }
 
-void apagarContato(){
+void apagarContato(Contato* _pessoa){
     //quando apagar um contato, atribui os valores antigoMaiorX nas variaveis maiorX
+    bool valido = true;
+    while (valido){
+        system("cls");
+        cout << "Tem certeza que deseja apagar este contato? (S/N)\n";
+        char escolha;
+        cin >> escolha;
+        
+        string telefone = _pessoa->telefone;        
+        if (escolha == 'S' || escolha == 's'){
+            for (int i = 0; i < lista.size(); i++){
+                if (lista[i].telefone == telefone){
+                    lista.erase(lista.begin() + i);                    
+                    cout << "Contato excluído com sucesso.";
+                    valido = false;
+                    cin.ignore();
+                    break;
+                }
+            }            
+        }
+        else if (escolha == 'N' || escolha == 'n'){
+            valido = false;
+        }        
+    }
+    system("cls");
 }
 
 void carregarContatosArquivo(){
